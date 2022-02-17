@@ -1,28 +1,72 @@
-import '@fortawesome/fontawesome-free/js/all.js';
-import { todoList, todoListElement } from './modules.js';
+import './style.css';
+import { getTask } from './Modules/data.js';
+import { deleteTask, deleteOne } from './controllTools.js';
 
-import('./style.css');
+export const taskList = document.querySelector('.task-list-container');
 
-const todo = () => {
-  todoList.forEach((todo) => {
-    const { completed, description } = todo;
-    const todoElement = document.createElement('li');
-    let list = '';
-    list += `
-                    <div class='content'>
-                       <input type="checkbox" ${
-  completed ? 'checked' : ''
-} class='input' />
-                        <span>${description}</span>
-                    </div>
-                   <span class='icon'>
-                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                   </span>
-                    `;
-    todoElement.innerHTML = list;
-    todoElement.classList.add('list-row');
-    todoListElement.appendChild(todoElement);
+function getInputValue(task) {
+  return task.description;
+}
+
+getTask().forEach((task) => {
+  taskList.innerHTML += `<li class="container task flex-center" draggable="true">
+  <span class="left flex-center">
+    <input id=${task.index} type="checkbox" ${
+  task.completed ? 'checked' : ''
+}  class="checkbox" />
+    <form class="edit-form" action="/">
+     <input data-index-number=${task.index} value='${getInputValue(
+  task,
+)}' class="${task.completed ? 'edit-task disabled' : 'edit-task'}" ${
+  task.completed ? 'disabled' : ''
+}>
+   </form>
+  </span>
+    <span class="right">
+      <i class="fas fa-ellipsis-v"></i>
+        <i class="far fa-trash-alt"></i>
+      </span>
+  </li>`;
+});
+
+export const task = document.querySelectorAll('.task');
+export const editTask = document.querySelectorAll('.edit-task');
+const editForm = document.querySelectorAll('.edit-form');
+const reload = document.querySelector('.reload');
+
+editForm.forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    editTask.forEach((taskList) => {
+      getTask().forEach((task) => {
+        if (taskList.dataset.indexNumber === task.index) {
+          task.description = taskList.value;
+          localStorage.setItem('Task-list', JSON.stringify(getTask()));
+        }
+      });
+    });
   });
-};
+});
 
-window.addEventListener('DOMContentLoaded', todo);
+reload.addEventListener('click', () => {
+  location.reload();
+});
+
+task.forEach((item) => {
+  item.addEventListener('click', () => {
+    task.forEach((t) => t.classList.remove('focus'));
+    item.classList.add('focus');
+  });
+});
+
+deleteTask();
+
+task.forEach((item) => {
+  item.addEventListener('click', () => {
+    if (item.classList.contains('focus')) {
+      const deleteIcon = item.querySelector('.far');
+      const taskId = item.querySelector('.checkbox').id;
+      deleteOne(deleteIcon, taskId);
+    }
+  });
+});
