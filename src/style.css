@@ -1,38 +1,49 @@
 body {
-  background-color: #f0f0f0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
   height: 100vh;
-  overflow: hidden;
+}
+
+.form {
+  grid-column: 5/9;
+  grid-row: 2/3;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .todo-list {
   display: flex;
   flex-direction: column;
   list-style: none;
-  margin: 0;
   padding: 0;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 400px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .input-todo {
   height: 50px;
   border: none;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 90%;
   font-style: italic;
-  font-size: 15px;
+  font-size: 16px;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .title {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .icon {
@@ -50,6 +61,12 @@ body {
 .myFooter a {
   text-decoration: none;
   color: #928f8f;
+}
+
+.main-header {
+  width: 100%;
+  height: 100px;
+  background-color: #928f8f;
 }
 
 .myFooter a:hover {
@@ -79,7 +96,7 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgb(172, 172, 172);
-  padding-right: 20px;
+  padding: 0 20px;
 }
 
 .header {
@@ -88,7 +105,6 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  width: auto;
   padding-left: 20px;
   padding-right: 20px;
   border-bottom: 1px solid rgb(172, 172, 172);
@@ -98,13 +114,30 @@ body {
   color: rgb(71, 69, 69);
 }
 
-.main-container {
+.content {
+  justify-content: space-between;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  column-gap: 10px;
 }
 
-.content {
+.content span {
   color: rgb(71, 69, 69);
+}
+
+@media screen and (min-width: 320px) {
+  .form {
+    grid-column: 3/11;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    grid-column: 4/10;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .form {
+    grid-column: 5/9;
+  }
 }

@@ -6,6 +6,28 @@
     <title>To Do List App</title>
   <script defer src="bundle.js"></script></head>
   <body>
-    <ul class="todo-list"></ul>
+    <main class="main-container">
+      <form class="form">
+        <div class="title-wrapper">
+          <h1 class="title">Today's To Do</h1>
+          <span class="icon">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </span>
+        </div>
+
+        <div class="input-container">
+          <input
+            type="text"
+            class="input-todo"
+            placeholder="add to your list ..."
+          />
+          <span class="icon"><i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <ul class="todo-list"></ul>
+        <div class="myFooter">
+          <a href="#">Clear completed</a>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
