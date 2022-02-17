@@ -44,7 +44,7 @@ And For tracking linter errors in JavaScript files run:
 
 ## Live Demo
 
-See the [Live](https://cynthiainga.github.io/to-do-list-app/)
+See the [Live](https://cynthiainga.github.io/to-do-list-app/dist)
 
 ## Author
 
