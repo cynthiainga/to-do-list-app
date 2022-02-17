@@ -1,143 +1,163 @@
-body {
-  box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  padding: 0;
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  height: 100%;
-  background-color: #f3f3f3;
-}
-
-.main-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
-  height: 100vh;
-}
-
-.form {
-  grid-column: 5/9;
-  grid-row: 2/3;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.todo-list {
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
   list-style: none;
-  padding: 0;
 }
 
-.input-todo {
-  height: 50px;
-  border: none;
-  font-style: italic;
+body {
+  font-family: " Poppins ", sans-serif;
+  width: 100%;
+  height: 100vh;
+  background-color: #f8f9fa;
   font-size: 16px;
 }
 
-.title-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+.main-container {
+  height: 100%;
+  background-color: #f8f9fa;
 }
 
-.title {
-  font-size: 22px;
-}
-
-.icon {
-  color: #928f8f;
-}
-
-.myFooter {
-  display: flex;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3f3f3;
-}
-
-.myFooter a {
-  text-decoration: none;
-  color: #928f8f;
-}
-
-.main-header {
-  width: 100%;
-  height: 100px;
-  background-color: #928f8f;
-}
-
-.myFooter a:hover {
-  color: #000;
-  text-decoration: underline;
-}
-
-.list-row {
-  display: flex;
-  flex-direction: row;
-  height: 50px;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid rgb(173, 173, 173);
-  cursor: pointer;
-}
-
-.input-todo:focus {
+input,
+button {
+  border: none;
   outline: none;
 }
 
-.input-container {
+i { cursor: pointer; }
+
+.flex-center {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(172, 172, 172);
-  padding: 0 20px;
 }
 
-.header {
-  display: flex;
+#tasks {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.task-list {
+  flex-direction: column;
+  border: 2px solid #fff;
+  width: 70%;
+  box-shadow: 3px 3px 7px #73767a;
+  margin-top: 40px;
+  border-radius: 5px;
+}
+
+.task-list .container {
   flex-direction: row;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #c1c4c9;
   justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid rgb(172, 172, 172);
 }
 
-.header h1 {
-  color: rgb(71, 69, 69);
+.task-list-container {
+  width: 100%;
 }
 
-.content {
+.task-list #add-task {
+  width: 100%;
   justify-content: space-between;
-  display: flex;
-  column-gap: 10px;
 }
 
-.content span {
-  color: rgb(71, 69, 69);
+.task-list #add-task button {
+  padding: 8px 5px;
+  background-color: transparent;
 }
 
-@media screen and (min-width: 320px) {
-  .form {
-    grid-column: 3/11;
-  }
+.task-list-container .task i {
+  font-size: 20px;
+  color: #0f0f0f;
 }
 
-@media screen and (min-width: 768px) {
-  .form {
-    grid-column: 4/10;
-  }
+.task-list .container:first-child i {
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-@media screen and (min-width: 1440px) {
-  .form {
-    grid-column: 5/9;
-  }
+.task-list #add-task button i {
+  font-size: 20px;
+  color: #2e2b2b;
+  transform: rotate(90deg);
+}
+
+.task-list #add-task button i:hover {
+  color: #878a8f;
+}
+
+.task-list #add-task input {
+  flex: 1;
+  font-family: " Roboto ", sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.task-list-container .task {
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0.9rem;
+  cursor: move;
+}
+
+.task-list-container .task .left {
+  width: 90%;
+}
+
+.task-list-container .task .left form {
+  width: 100%;
+}
+
+.task-list-container .task .left .edit-task {
+  padding-left: 0.7rem;
+  font-size: 1rem;
+  color: #201f1f;
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.title {
+  color: #5c5050;
+  font-size: 1.3rem;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #b3aeae;
+  background-color: #f8f9fa;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.btn:hover {
+  background-color: #b3aeae;
+  color: #f8f9fa;
+}
+
+.disabled {
+  font-size: 0.6rem;
+  font-style: italic;
+}
+
+.focus {
+  background-color: #faf3db;
+}
+
+.task-list-container .task .right .far {
+  display: none;
+}
+
+.task-list-container .task.focus .right .far {
+  display: block;
+}
+
+.task-list-container .task.focus .right .fas {
+  display: none;
 }
