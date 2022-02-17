@@ -1,7 +1,7 @@
 {
   "name": "to-do-list-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"To-do list\" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/cynthiainga/todo-list-app#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.0.0"
+    "@fortawesome/fontawesome-free": "^6.0.0",
+    "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
