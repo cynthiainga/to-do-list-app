@@ -2,32 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List App.</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Todo_List_App</title>
   <script defer src="bundle.js"></script></head>
   <body>
-    <main class="main-container">
-      <form class="form">
-        <div class="title-wrapper">
-          <h1 class="title">Today's To Do</h1>
-          <span class="icon">
-            <i class="fa-solid fa-arrows-rotate"></i>
-          </span>
+    <div id="tasks" class="flex-center">
+      <div class="task-list flex-center">
+        <div class="container flex-center">
+          <span class="title">Today's To Do</span>
+          <span class="reload"><i class="fas fa-sync-alt"></i></span>
         </div>
-
-        <div class="input-container">
-          <input
-            type="text"
-            class="input-todo"
-            placeholder="add to your list ..."
-          />
-          <span class="icon"><i class="fa-solid fa-arrow-right"></i></span>
+        <div class="container flex-center">
+          <form id="add-task" class="flex-center" action="/">
+            <input
+              id="add-task-input"
+              type="text"
+              placeholder="Add to your list"
+            />
+            <button><i class="fa fa-plus-circle"></i></button>
+          </form>
         </div>
-        <ul class="todo-list"></ul>
-        <div class="myFooter">
-          <a href="#">Clear completed</a>
-        </div>
-      </form>
-    </main>
+        <ul class="task-list-container"></ul>
+        <button class="container btn clear-task" type="button">
+          Clear all completed
+        </button>
+      </div>
+    </div>
   </body>
 </html>
