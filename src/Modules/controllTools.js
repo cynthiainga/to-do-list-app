@@ -1,7 +1,4 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable import/prefer-default-export */
-
+// eslint-disable-next-line import/no-cycle
 import { getTask } from './data.js';
 
 export function deleteTask() {
@@ -12,7 +9,7 @@ export function deleteTask() {
         (task) => task.completed !== true,
       );
       localStorage.setItem('Task-list', JSON.stringify(filterCompliteTask));
-      location.reload();
+      window.location.reload();
     }
   });
 }
@@ -21,7 +18,7 @@ export function addTask() {
   class Task {
     constructor(description) {
       this.description = description;
-      this.index = new Date();
+      this.index = Number();
       this.completed = false;
     }
   }
@@ -41,6 +38,6 @@ export function deleteOne(deleteIcon, taskId) {
   deleteIcon.addEventListener('click', () => {
     const filteredTask = getTask().filter((task) => task.index !== taskId);
     localStorage.setItem('Task-list', JSON.stringify(filteredTask));
-    location.reload();
+    window.location.reload();
   });
 }
