@@ -1,28 +1,37 @@
-import '@fortawesome/fontawesome-free/js/all.js';
-import { todoList, todoListElement } from './modules.js';
+import './style.css';
+import storage from './storage.js';
+import taskActions from './taskActions.js';
+import dom from './dom.js';
+import task from './Task.js';
 
-import('./style.css');
+const form = document.getElementById('form');
+const todoTextInput = document.getElementById('add-book');
 
-const todo = () => {
-  todoList.forEach((todo) => {
-    const { completed, description } = todo;
-    const todoElement = document.createElement('li');
-    let list = '';
-    list += `
-                    <div class='content'>
-                       <input type="checkbox" ${
-  completed ? 'checked' : ''
-} class='input' />
-                        <span>${description}</span>
-                    </div>
-                   <span class='icon'>
-                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                   </span>
-                    `;
-    todoElement.innerHTML = list;
-    todoElement.classList.add('list-row');
-    todoListElement.appendChild(todoElement);
-  });
+const getDefaultTasks = () => {
+  const tasks = task.get();
+  const storedTasks = storage.get('tasks');
+  if (storedTasks) {
+    storedTasks.map((t) => task.add(t));
+    dom.renderTasks(storedTasks);
+  } else {
+    storage.set('tasks', tasks);
+    dom.renderTasks(tasks);
+  }
 };
 
-window.addEventListener('DOMContentLoaded', todo);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const savedTask = taskActions.addTask(todoTextInput.value);
+  task.add(savedTask);
+  const tasks = task.get();
+  dom.renderTasks(tasks);
+  todoTextInput.value = '';
+});
+
+getDefaultTasks();
+dom.updateUI(storage.get('tasks'));
+dom.showTrashIcon();
+dom.editTastSubmit(task);
+dom.completeTaskHandler();
+dom.deleteTaskHandler();
+dom.clearCompletedHandler();
