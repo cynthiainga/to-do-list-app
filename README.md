@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Todo_List
+# To Do List
 
 ## Description
 
