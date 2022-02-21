@@ -2,37 +2,38 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: 'production',
   entry: {
     index: './src/index.js',
   },
-  devtool: 'inline-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        use: 'asset/resource',
-      },
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(js)$/,
-        use: 'babel-loader',
-      },
-    ],
-  },
+  devtool: false,
   devServer: {
     static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Todo List',
       template: './src/index.html',
     }),
   ],
   output: {
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+    ],
   },
 };
